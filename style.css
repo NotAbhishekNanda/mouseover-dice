@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;900&display=swap");
+html {
+	background-color: #f9f6ef;
+}
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+body,
+.container {
+	margin: 0;
+	padding: 0;
+}
+.container {
+	border: 15px solid #ebebe3;
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	align-content: center;
+	perspective: 3000px;
+}
+
+@keyframes rotate360 {
+	to {
+		transform: rotate3d(1, 1, 1, 360deg);
+	}
+}
+@keyframes scale-shadow2 {
+	0%,
+	50%,
+	100% {
+		transform: scale(1);
+	}
+	25%,
+	75% {
+		transform: scale(1.4);
+	}
+}
+
+h1 {
+	text-align: center;
+	font-weight: 100;
+	font-size: clamp(3rem, 10vw, 6rem);
+	margin: 0;
+	padding: 0;
+}
+.box:hover {
+	animation-play-state: running;
+}
+.box {
+	animation: rotate360 3s linear infinite;
+	animation-play-state: paused;
+}
+.box {
+	position: relative;
+	width: 10em;
+	aspect-ratio: 1 / 1;
+	transition: transform 1s ease;
+	transform-style: preserve-3d;
+}
+.box > *,
+.box > *:before,
+.box > *:after {
+	font-weight: 900;
+	transform-style: preserve-3d;
+	border-radius: 5px;
+	box-shadow: inset 0px 0px 3px #fff7, inset 0px 0px 5px #0007,
+		inset 1px 1px 0.5em #0005;
+	text-shadow: 2px 2px 2px #fff9, -1px -1px 1px #0009;
+}
+.box-1,
+.box-2 {
+	position: absolute;
+	inset: 0;
+	background-color: #f3d060;
+	color: #1f2020;
+	text-align: center;
+	font-size: 4rem;
+	line-height: 10rem;
+}
+.box-1 {
+	transform: translateZ(1.25em);
+}
+.box-2 {
+	transform: translateZ(-1.25em) rotateY(180deg);
+}
+
+.box-1:after,
+.box-1:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: #e1f8dc;
+}
+.box-1:before {
+	content: "3";
+	transform-origin: bottom right;
+	transform: rotateY(90deg) translateX(100%);
+}
+.box-1:after {
+	content: "4";
+	transform-origin: bottom left;
+	transform: rotateY(-90deg) translateX(-100%);
+}
+
+.box-2:after,
+.box-2:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: #5eb0e5;
+}
+.box-2:before {
+	content: "2";
+	transform-origin: bottom left;
+	transform: rotateX(-90deg) translateY(100%);
+}
+.box-2:after {
+	content: "5";
+	transform-origin: top right;
+	transform: rotateX(90deg) translateY(-100%);
+}
+.shadow {
+	width: 10em;
+	height: 1em;
+	margin-top: 5em;
+	background-image: radial-gradient(at center, #0003, transparent 80%);
+	background-repeat: no-repeat;
+}
+.box:hover + .shadow {
+	animation-play-state: running;
+}
+.box + .shadow {
+	animation: scale-shadow2 3s linear infinite;
+	animation-play-state: paused;
+}
